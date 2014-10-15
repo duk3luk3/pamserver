@@ -21,6 +21,11 @@ For full access to PAM, the server must be run as root.
 To create a pam server that is reachable over the network, use the unix socket
 as a backend to an appropriately secured ssl server behind e.g. nginx.
 
+Dependencies
+============
+
+* simplepam
+
 Usage
 =====
 
