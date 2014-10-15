@@ -1,0 +1,5 @@
+{
+  "sockfile": "/var/run/pamserver/pamserver.s",
+  "pidfile": "/var/run/pamserver/pamserver.pid",
+  "syslog": false
+}
