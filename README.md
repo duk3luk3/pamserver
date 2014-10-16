@@ -51,6 +51,20 @@ Usage
     optional arguments:
       -h, --help  show this help message and exit
 
+Building certs for stunnel
+==========================
+
+    cd stunnel
+    wget https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.0-rc2/EasyRSA-3.0.0-rc2.tgz
+    tar -xf EasyRSA-3.0.0-rc2.tgz -C easyrsa
+    cd easyrsa/
+    ./easyrsa init-pki
+    ./easyrsa build-ca
+    ./easyrsa build-server-full server-cert
+    /easyrsa build-client-full client-cert
+
+This will create certificates that will work with the stunnel example config.
+
 Todo
 ====
 
