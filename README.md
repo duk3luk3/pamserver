@@ -19,7 +19,7 @@ The reference client is available as pamclient.
 For full access to PAM, the server must be run as root.
 
 To create a pam server that is reachable over the network, use the unix socket
-as a backend to an appropriately secured ssl server behind e.g. nginx.
+as a backend to an appropriately secured ssl server using e.g. stunnel.
 
 Dependencies
 ============
@@ -54,9 +54,8 @@ Usage
 Todo
 ====
 
-* http mode
 * chroot implementation
-* nginx sample config
+* stunnel sample config
 * Systemd service and init files
 
 License
