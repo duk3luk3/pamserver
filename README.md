@@ -61,7 +61,7 @@ Building certs for stunnel
     ./easyrsa init-pki
     ./easyrsa build-ca
     ./easyrsa build-server-full server-cert
-    /easyrsa build-client-full client-cert
+    ./easyrsa build-client-full client-cert
 
 This will create certificates that will work with the stunnel example config.
 
