@@ -25,6 +25,8 @@ import os
 
 import util
 
+from six import PY3
+
 log_formatter = logging.Formatter('pamserver %(levelname)s: %(message)s')
 log_handler = logging.StreamHandler()
 log_handler.setFormatter(log_formatter)
@@ -44,7 +46,10 @@ class RequestHandler(SocketServer.BaseRequestHandler):
         'reason': message,
         'data': data
         }
-    sock.sendall(bytes(json.dumps(obj), 'utf-8'))
+    b = json.dumps(obj)
+    if PY3:
+      b = bytes(b, 'utf-8')
+    sock.sendall(b)
 
   def handle(self):
     logger.debug("Received connection.")
@@ -54,7 +59,9 @@ class RequestHandler(SocketServer.BaseRequestHandler):
         if len(r) == 0:
           logger.debug("Client quit")
           break
-        data = json.loads(str(r, 'utf-8'))
+        if PY3:
+          r = str(r, 'utf-8')
+        data = json.loads(r)
       except ValueError:
         self.reply({}, status=400, message='JSON Parse error')
 

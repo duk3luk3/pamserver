@@ -4,6 +4,8 @@ import sys
 import argparse
 import json
 import getpass
+from six.moves import input
+from six import PY3
 
 parser = argparse.ArgumentParser()
 parser.add_argument('sock', action='store', help='the socket file')
@@ -19,8 +21,15 @@ try:
     data = {}
     data['username'] = input("Enter name: ")
     data['password'] = getpass.getpass("Enter pass: ")
-    sock.sendall(bytes(json.dumps(data), 'utf-8'))
-    r = str(sock.recv(1024), 'utf-8')
+
+    b = json.dumps(data)
+    if PY3:
+      b = bytes(jo, 'utf-8')
+    sock.sendall(b)
+
+    r = sock.recv(1024)
+    if PY3:
+      r = str(r, 'utf-8')
     print(json.loads(r))
 except KeyboardInterrupt:
   print("Bye!")

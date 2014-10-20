@@ -24,7 +24,9 @@ as a backend to an appropriately secured ssl server using e.g. stunnel.
 Dependencies
 ============
 
-* simplepam
+* Python 2.7.x or 3.x
+* six
+* pam (Python 2) or simplepam (Python 3)
 
 Usage
 =====
@@ -69,7 +71,6 @@ Todo
 ====
 
 * chroot implementation
-* stunnel sample config
 * Systemd service and init files
 
 License
